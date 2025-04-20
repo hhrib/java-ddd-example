@@ -158,6 +158,37 @@ bootJar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
+test {
+    environment "BACKOFFICE_ELASTICSEARCH_HOST", "localhost"
+    environment "BACKOFFICE_ELASTICSEARCH_PORT", "9200"
+    environment "BACKOFFICE_ELASTICSEARCH_INDEX_PREFIX", "backoffice"
+    environment "DATABASE_HOST", "localhost"
+    environment "DATABASE_PORT", "3306"
+    environment "DATABASE_NAME", "backoffice"
+    environment "DATABASE_USERNAME", "root"
+    environment "DATABASE_PASSWORD", "test"
+    environment "DB_HOST", "localhost"
+    environment "BACKOFFICE_DATABASE_HOST", "localhost"
+    environment "BACKOFFICE_DATABASE_PORT", "3306"
+    environment "BACKOFFICE_DATABASE_NAME", "backoffice"
+    environment "BACKOFFICE_DATABASE_USER", "root"
+    environment "BACKOFFICE_DATABASE_PASSWORD", "test"
+    environment "MOOC_BACKEND_SERVER_PORT","8030"
+
+    environment "MOOC_DATABASE_HOST", "localhost"
+    environment "MOOC_DATABASE_PORT", "3306"
+    environment "MOOC_DATABASE_NAME", "mooc"
+    environment "MOOC_DATABASE_USER", "root"
+    environment "MOOC_DATABASE_PASSWORD", "test"
+
+    environment "RABBITMQ_HOST","localhost"
+    environment "RABBITMQ_PORT","5672"
+    environment "RABBITMQ_LOGIN","codely"
+    environment "RABBITMQ_PASSWORD","c0d3ly"
+    environment "RABBITMQ_EXCHANGE","domain_events"
+    environment "RABBITMQ_MAX_RETRIES","5"
+}
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.1.5'

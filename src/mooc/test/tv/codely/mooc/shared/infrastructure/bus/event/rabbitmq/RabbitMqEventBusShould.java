@@ -3,6 +3,8 @@ package tv.codely.mooc.shared.infrastructure.bus.event.rabbitmq;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import tv.codely.mooc.MoocContextInfrastructureTestCase;
 import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.shared.domain.course.CourseCreatedDomainEvent;
@@ -16,6 +18,8 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
+@Transactional
 public final class RabbitMqEventBusShould extends MoocContextInfrastructureTestCase {
     @Autowired
     private RabbitMqEventBus                      eventBus;

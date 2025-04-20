@@ -19,7 +19,7 @@ run:
 	@./gradlew :run
 
 ping-mysql:
-	@docker exec codely-java_ddd_example-mysql mysqladmin --user=root --password= --host "127.0.0.1" ping --silent
+	@docker exec codely-java_ddd_example-mysql mysqladmin --user=root --password=test --host "127.0.0.1" ping --silent
 
 # Start the app
 start-mooc_backend:

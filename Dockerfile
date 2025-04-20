@@ -1,15 +1,17 @@
 FROM openjdk:21-slim-buster
 WORKDIR /app
 
-RUN apt update && apt install -y curl git
+# Instalar herramientas necesarias sin usar curl
+RUN apt update && apt install -y wget xz-utils git ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 18.0.0
+# Descargar e instalar Node.js 18
+RUN wget --no-check-certificate https://nodejs.org/dist/v18.0.0/node-v18.0.0-linux-x64.tar.xz && \
+    tar -xJf node-v18.0.0-linux-x64.tar.xz -C /usr/local --strip-components=1 && \
+    rm node-v18.0.0-linux-x64.tar.xz
 
-RUN mkdir -p $NVM_DIR
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# Asegurar que node y npm estén en el PATH
+ENV PATH="/usr/local/bin:$PATH"
 
-RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION && nvm use default
-
-ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+# Verificación opcional
+RUN node -v && npm -v && java -version
