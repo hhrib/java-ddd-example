@@ -29,24 +29,13 @@ class CreateVideoTest {
 		//		RestAssured.basePath = "/videos";
 		given()
 			.contentType(ContentType.JSON)
-			.port(8030)
+			.port(port)
 			.body(requestBody)
-			.pathParam("id", "fdfsdfdsfdsf")
+			.pathParam("id", "f81d4fae-7dec-11d0-a765-00a0c91e6bf6")
 			.when()
 			.put("/videos/{id}")
 			.then()
 			.statusCode(HttpStatus.CREATED.value())
 			.body(equalTo(""));
 	}
-	//	@Test
-	//	void shouldReturnHelloWorld() {
-	//		given()
-	//			.port(port)
-	//			.contentType(ContentType.JSON)
-	//			.body("{\"title\": \"The best course\", \"url\": \"http>//codely.com\", \"text\": \"Hello video!\"}")
-	//			.when()
-	//			.post("/videos/1aab45ba-3c7a-4344-8936-78466eca77fa")
-	//			.then()
-	//			.statusCode(201);
-	//	}
 }
