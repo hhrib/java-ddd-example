@@ -25,8 +25,6 @@ class CreateVideoTest {
 	@Test
 	public void shouldCreateVideo() {
 		String requestBody = "{\"title\": \"The best course\", \"url\": \"http://codely.com\", \"text\": \"Hello video\"}";
-		//		RestAssured.port = 8030;
-		//		RestAssured.basePath = "/videos";
 		given()
 			.contentType(ContentType.JSON)
 			.port(port)

@@ -38,16 +38,15 @@ public class VideosPutController extends ApiController {
 		System.out.println("Video Creado");
 		//		dispatch(new CreateCourseCommand(id, request.name(), request.duration()));
 		VideoStep videoStep = videoCreator.createVideo(id, request.getTitle(), request.getUrl(), request.getText());
-//		return ResponseEntity.ok(videoStep);
+		//		return ResponseEntity.ok(videoStep);
 		return new ResponseEntity<VideoStep>(HttpStatus.CREATED);
-//		return ResponseEntity.ok("");
+		//		return ResponseEntity.ok("");
 	}
 }
 
 class Request {
 
-	public Request() {
-	}
+	public Request() {}
 
 	private String title;
 	private String url;
