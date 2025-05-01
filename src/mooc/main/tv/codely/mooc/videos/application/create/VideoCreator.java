@@ -1,21 +1,20 @@
 package tv.codely.mooc.videos.application.create;
 
 import org.springframework.stereotype.Service;
-import tv.codely.mooc.steps.domain.StepId;
-import tv.codely.mooc.steps.domain.StepTitle;
 import tv.codely.mooc.steps.domain.video.VideoStep;
-import tv.codely.mooc.steps.domain.video.VideoStepText;
-import tv.codely.shared.domain.VideoUrl;
+import tv.codely.mooc.videos.domain.VideoRepositoryInterface;
 
 @Service
-public class VideoCreator {
+public class VideoCreator{
+
+	private final VideoRepositoryInterface repository;
+
+	public VideoCreator(VideoRepositoryInterface repository) {
+		this.repository = repository;
+	}
+
 
 	public VideoStep createVideo(String id, String title, String url, String text) {
-		StepId stepId = new StepId(id);
-		StepTitle stepTitle = new StepTitle(title);
-		VideoUrl videoUrl = new VideoUrl(url);
-		VideoStepText videoStep = new VideoStepText(text);
-		return new VideoStep(stepId, stepTitle, videoUrl, videoStep);
-
+		return repository.createVideo(id, title, url, text);
 	}
 }

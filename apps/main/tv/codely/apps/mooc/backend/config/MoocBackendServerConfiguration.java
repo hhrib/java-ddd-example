@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import tv.codely.mooc.videos.domain.VideoRepositoryInterface;
+import tv.codely.mooc.videos.infrastructure.VideoInMemRepository;
 import tv.codely.shared.infrastructure.spring.ApiExceptionMiddleware;
 
 @Configuration
@@ -23,5 +25,14 @@ public class MoocBackendServerConfiguration {
 		registrationBean.setFilter(new ApiExceptionMiddleware(mapping));
 
 		return registrationBean;
+	}
+
+	@Configuration
+	public class RepositoryConfig {
+
+		@Bean
+		public VideoRepositoryInterface videoRepository() {
+			return new VideoInMemRepository();
+		}
 	}
 }
